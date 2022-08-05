@@ -1,8 +1,6 @@
 <template>
     <div>
-        <div>cifferni</div>
-        <div>{{ data.num }}</div>
-        <button @click="add"></button>
+       <button @click="add"></button>
     </div>
 </template>
 <script lang="ts" setup>
@@ -19,7 +17,7 @@ onMounted(() => {
     console.log(import.meta.env.VITE_BASE_API)
 })
 const add = (): void => {
-    router.push('/page')
+    router.push('/homePage')
 }
 </script>
 <style scoped></style>
