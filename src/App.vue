@@ -1,8 +1,4 @@
 <template>
-    <div>
-        <div>cifferni</div>
-        <div>cifferni</div>
-    </div>
+    <router-view></router-view>
 </template>
-<script lang="ts" setup></script>
-<style scoped></style>
+
