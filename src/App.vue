@@ -1,58 +1,57 @@
 <template>
-<router-view v-slot="{ Component, route}">
-  <!-- 使用任何自定义过渡和回退到 `fade` -->
-  <transition :name="route.meta.transition || 'fade'"  mode="out-in">
-    <component :is="Component" />
-  </transition>
-</router-view>
+    <router-view v-slot="{ Component, route }">
+        <!-- 使用任何自定义过渡和回退到 `fade` -->
+        <transition :name="route.meta.transition || 'fade'" mode="out-in">
+            <component :is="Component" />
+        </transition>
+    </router-view>
 </template>
 <style scoped>
 .fade-transform-leave-active,
 /* fade */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.28s;
+    transition: opacity 0.28s;
 }
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* fade-transform */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
-  transition: all .5s;
+    transition: all 0.5s;
 }
 
 .fade-transform-enter {
-  opacity: 0;
-  transform: translateX(-30px);
+    opacity: 0;
+    transform: translateX(-30px);
 }
 
 .fade-transform-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+    opacity: 0;
+    transform: translateX(30px);
 }
 
 /* breadcrumb transition */
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
-  transition: all .5s;
+    transition: all 0.5s;
 }
 
 .breadcrumb-enter,
 .breadcrumb-leave-active {
-  opacity: 0;
-  transform: translateX(20px);
+    opacity: 0;
+    transform: translateX(20px);
 }
 
 .breadcrumb-move {
-  transition: all .5s;
+    transition: all 0.5s;
 }
 
 .breadcrumb-leave-active {
-  position: absolute;
+    position: absolute;
 }
-
 </style>
