@@ -16,9 +16,7 @@ interface DataType {
 const data = reactive<DataType>({
     num: 0
 })
-onMounted(() => {
-
-})
+onMounted(() => {})
 const add = (): void => {
     router.push('/page')
 }

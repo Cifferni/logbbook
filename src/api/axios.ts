@@ -6,11 +6,10 @@ const request = axios.create({
     timeout: 5000
 })
 request.interceptors.request.use(
-    (config:any) => {
+    (config: any) => {
         return config
     },
-    (error) =>
-        Promise.reject(error)
+    (error) => Promise.reject(error)
 )
 
 request.interceptors.response.use(
