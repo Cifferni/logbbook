@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 import router from './router/index'
-import 'element-plus/dist/index.css'
 import request from '@/api/axios'
+import '@/assets/styles/reset.scss'
+import 'element-plus/dist/index.css'
 request
     .get('/weather_mini?city=北京')
     .then((response) => {

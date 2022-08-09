@@ -1,6 +1,7 @@
 interface ImportMetaEnv {
     readonly VITE_BASE_URL: string
     readonly MODE_ENV: string
+    VITE_CREATE_SOURCEMAP: boolean
 }
 
 declare module '*.vue' {

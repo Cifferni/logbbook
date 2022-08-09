@@ -1,12 +1,23 @@
 <template>
     <router-view v-slot="{ Component, route }">
         <!-- 使用任何自定义过渡和回退到 `fade` -->
-        <transition :name="route.meta.transition || 'fade'" mode="out-in">
+        <transition :name="transition" mode="out-in">
             <component :is="Component" />
         </transition>
     </router-view>
 </template>
-<style scoped>
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+const router = useRoute()
+const transition = computed(() => {
+    if (router.meta.transition) {
+        return (router.meta.transition) as string
+    }
+    return 'fade'
+})
+</script>
+<style  lang="scss" scoped>
 .fade-transform-leave-active,
 /* fade */
 .fade-enter-active,

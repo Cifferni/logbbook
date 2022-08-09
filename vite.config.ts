@@ -2,10 +2,27 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import ElementPlus from 'unplugin-element-plus/vite'
-export default defineConfig(({ mode }) => {
+import viteCompression from 'vite-plugin-compression'
+export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
+    let sourcemap: 'inline' | boolean | 'hidden' = false
+    if (env.VITE_CREATE_SOURCEMAP === 'inline') {
+        sourcemap = 'inline'
+    }
     return {
-        plugins: [vue(), ElementPlus()],
+        base: './',
+        brotliSize: true,
+        plugins: [
+            vue(),
+            ElementPlus(),
+            viteCompression({
+                verbose: true,
+                disable: false,
+                threshold: 10240,
+                algorithm: 'gzip',
+                ext: '.gz'
+            })
+        ],
         resolve: {
             alias: {
                 '@': resolve(__dirname, 'src')
@@ -20,6 +37,24 @@ export default defineConfig(({ mode }) => {
                     rewrite: (path) => path.replace(/^\/api/, '')
                 }
             }
+        },
+        build: {
+            terserOptions: {
+                compress: {
+                    drop_console: JSON.parse(env.VITE_DROP_CONSOLE),
+                    drop_debugger: true
+                }
+            },
+            rollupOptions: {
+                output: {
+                    chunkFileNames: 'js/[name]-[hash].js',
+                    entryFileNames: 'js/[name]-[hash].js',
+                    assetFileNames: '[ext]/[name]-[hash].[ext]'
+                }
+            },
+            minify: 'terser',
+            sourcemap,
+            chunkSizeWarningLimit: 500
         }
     }
 })
