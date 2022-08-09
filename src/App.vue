@@ -12,12 +12,12 @@ import { useRoute } from 'vue-router'
 const router = useRoute()
 const transition = computed(() => {
     if (router.meta.transition) {
-        return (router.meta.transition) as string
+        return router.meta.transition as string
     }
     return 'fade'
 })
 </script>
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 .fade-transform-leave-active,
 /* fade */
 .fade-enter-active,
