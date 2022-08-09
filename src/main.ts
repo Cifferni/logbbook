@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router/index'
 import '@/assets/styles/reset.scss'
 import 'element-plus/dist/index.css'
-import { banConsole } from '@/utils/index'
+import { banConsole } from '@/utils/banConsole'
 try {
     banConsole()
 } catch (error: any) {
