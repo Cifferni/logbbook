@@ -1,5 +1,5 @@
 // 禁止打开控制台
-export function banConsole() {
+export function banConsole():void {
     if (import.meta.env.MODE === 'production') {
         if (
             window.outerHeight - window.innerHeight > 200 ||

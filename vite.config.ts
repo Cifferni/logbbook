@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import ElementPlus from 'unplugin-element-plus/vite'
 import viteCompression from 'vite-plugin-compression'
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     let sourcemap: 'inline' | boolean | 'hidden' = false
     if (env.VITE_CREATE_SOURCEMAP === 'inline') {

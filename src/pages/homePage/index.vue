@@ -1,24 +1,21 @@
 <template>
     <div>
-        <div>cifferni</div>
-        <div>{{ data.num }}</div>
+        {{num}}
+        <ElButton type="success" @click="jia">+1</ElButton>
         <ElButton type="success" @click="add">1231231</ElButton>
     </div>
 </template>
-<script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
+<script lang="ts" setup name="homePage">
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElButton } from 'element-plus'
+import { ElButton, ElMenu, ElMenuItem, ElSubMenu } from 'element-plus'
+const num = ref(0)
 const router = useRouter()
-interface DataType {
-    num: number
-}
-const data = reactive<DataType>({
-    num: 0
-})
-onMounted(() => {})
 const add = (): void => {
     router.push('/page')
+}
+const jia = () => {
+    num.value += 1
 }
 </script>
 <style scoped></style>

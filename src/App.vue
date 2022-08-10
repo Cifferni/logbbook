@@ -1,10 +1,13 @@
 <template>
-    <router-view v-slot="{ Component, route }">
-        <!-- 使用任何自定义过渡和回退到 `fade` -->
-        <transition :name="transition" mode="out-in">
-            <component :is="Component" />
-        </transition>
-    </router-view>
+    <div>
+        <router-view v-slot="{ Component, route }">
+                <transition :name="transition" mode="out-in">
+                    <keep-alive :max="10">
+                        <component :is="Component" v-if="route.meta.keepAlive" />
+                    </keep-alive>
+                </transition>
+        </router-view>
+    </div>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
