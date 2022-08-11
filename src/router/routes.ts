@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
+import store from '@/store/index'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/homePage',
@@ -14,4 +15,5 @@ const routes: Array<RouteRecordRaw> = [
     },
     { path: '/', redirect: '/homePage' }
 ]
+store.dispatch('setKeepAliveRouteList', routes)
 export default routes

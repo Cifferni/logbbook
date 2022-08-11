@@ -1,18 +1,29 @@
 <template>
     <div>
-        <router-view v-slot="{ Component, route }">
-                <transition :name="transition" mode="out-in">
-                    <keep-alive :max="10">
-                        <component :is="Component" v-if="route.meta.keepAlive" />
-                    </keep-alive>
-                </transition>
+        <router-view v-slot="{ Component }">
+            <transition :name="transition" mode="out-in">
+                <keep-alive :include="data.keepAliveRouteList">
+                    <component :is="Component" />
+                </keep-alive>
+            </transition>
         </router-view>
     </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 const router = useRoute()
+const store = useStore()
+interface DataType {
+    keepAliveRouteList: string[]
+}
+const data = reactive<DataType>({
+    keepAliveRouteList: []
+})
+onMounted(() => {
+    data.keepAliveRouteList = store.state.keepAliveRoute.keepAliveRouteList
+})
 const transition = computed(() => {
     if (router.meta.transition) {
         return router.meta.transition as string
