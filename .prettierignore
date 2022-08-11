@@ -7,3 +7,4 @@ node_modules
 package-lock.json
 .history
 src/utils/banConsole.ts
+stats.html
