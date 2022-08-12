@@ -4,8 +4,6 @@ import { resolve } from 'path'
 import viteCompression from 'vite-plugin-compression'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { visualizer } from 'rollup-plugin-visualizer'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
@@ -27,9 +25,6 @@ export default defineConfig(({ mode }) => {
                 threshold: 10240,
                 algorithm: 'gzip',
                 ext: '.gz'
-            }),
-            Components({
-                resolvers: [ElementPlusResolver()]
             })
         ],
         resolve: {
