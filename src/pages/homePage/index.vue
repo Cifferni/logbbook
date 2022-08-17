@@ -1,7 +1,5 @@
 <template>
-<div></div>
+    <div></div>
 </template>
 <script lang="ts" setup name="homePage"></script>
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

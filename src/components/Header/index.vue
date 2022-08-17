@@ -30,7 +30,7 @@ const data = reactive({
 })
 </script>
 <style lang="scss" scoped>
-.seach{
+.seach {
     width: 600px;
 }
 </style>
