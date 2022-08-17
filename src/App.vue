@@ -1,9 +1,10 @@
 <template>
     <div>
-        <router-view v-slot="{ Component }">
-            <transition :name="transition" mode="out-in">
+        <Header></Header>
+        <router-view v-slot="{ Component, route }">
+            <transition :name="transition" :max="10" mode="out-in">
                 <keep-alive :include="data.keepAliveRouteList">
-                    <component :is="Component" />
+                    <component :key="route.name" :is="Component" />
                 </keep-alive>
             </transition>
         </router-view>
@@ -13,6 +14,7 @@
 import { computed, reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+import Header from '@/components/Header/index.vue'
 const router = useRoute()
 const store = useStore()
 interface DataType {

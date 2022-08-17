@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import viteCompression from 'vite-plugin-compression'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { visualizer } from 'rollup-plugin-visualizer'
-import ElementPlus from 'unplugin-element-plus/vite'
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
     let sourcemap: 'inline' | boolean | 'hidden' = false
@@ -15,8 +15,9 @@ export default defineConfig(({ mode }) => {
         base: './',
         brotliSize: true,
         plugins: [
-            vue(),
-            ElementPlus(),
+            vue({
+                template: { transformAssetUrls }
+            }),
             VueSetupExtend(),
             visualizer(),
             viteCompression({
@@ -25,6 +26,9 @@ export default defineConfig(({ mode }) => {
                 threshold: 10240,
                 algorithm: 'gzip',
                 ext: '.gz'
+            }),
+            quasar({
+                autoImportComponentCase: 'combined'
             })
         ],
         resolve: {

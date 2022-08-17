@@ -138,8 +138,6 @@ a:hover {
     visibility: hidden;
 }
 
-
-
 // 滚动条整体
 ::-webkit-scrollbar {
     z-index: 50;
@@ -158,7 +156,7 @@ a:hover {
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
-    transition: all .2s;
+    transition: all 0.2s;
     height: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -166,7 +164,7 @@ a:hover {
 // 滚动条的样式，是可以跟 :hover 伪类叠加使用的
 // 滚动条鼠标悬浮时的样式
 :hover::-webkit-scrollbar-thumb {
-    transition: all .2s;
+    transition: all 0.2s;
 }
 // 滚动条上下的箭头按钮
 ::-webkit-scrollbar-button {
